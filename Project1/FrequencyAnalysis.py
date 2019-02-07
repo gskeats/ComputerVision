@@ -27,7 +27,7 @@ def plot(coefficients,image_array):
     ax.plot_surface(X, Y, numpy.fft.fftshift(numpy.log(numpy.abs(coefficients) + 1)), cmap=plt.cm.coolwarm, linewidth=0,
                     antialiased=False)
     plt.show()
-    save(plt,"BasicFourier")
+    save(plt,"BasicFourierPuppy")
 
 def plotlogmagnitude(coefficients,magplotname,logplotname):
     magnitudeImage = numpy.fft.fftshift(numpy.abs(coefficients))

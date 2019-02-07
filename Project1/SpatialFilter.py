@@ -13,18 +13,28 @@ def convertcolormodeltoHSV(pixel_array):
 def convertcolormodetoYUV(pixel_array):
     cv2.cvtColor(pixel_array,cv2.COLOR_RGB2YUV)
     return pixel_array
+
 def getdimensions(pixel_array):
     return pixel_array.shape
+
+def largegaussianfilter(filter_size):
+    filter=cv2.getGaussianKernel(filter_size,0)
+    return filter
+def medianfilter(image_array,filter_size):
+    image_array=cv2.medianBlur(image_array,filter_size)
+    return image_array
 def definefilter(filter_size=3):
     filter=[]
     for pixel_space in range(filter_size):
+        list = [1] * filter_size
         for current_pixel in range(filter_size):
-            list=[1]*filter_size
-            filter_value=int(input("Pixel number "+str(current_pixel)+" in list "+str(pixel_space)+" "))
+            filter_value=float(input("Pixel number "+str(current_pixel)+" in list "+str(pixel_space)+" "))
             list[current_pixel]=filter_value
         filter.append(list)
     filter=numpy.array(filter)
     return filter
+
+
 def definefilterusingones(filter_size):
     filter=numpy.ones((filter_size,filter_size))
     filter=filter/filter.sum()
@@ -42,13 +52,6 @@ def scale_values(image_array):
     image_array=image_array/image_array.max()
     image_array=image_array*255
     return image_array
+
 def saveimg(filename,image_array,file_type="JPG"):
     imsave(filename+"."+file_type,image_array)
-
-#filter=definefilter(3)
-#first_image=loadimage("/Users/grahamskeats/Desktop/Noisy Puppy.JPG")
-#print(filter)
-#new_image=apply_filter(filter, first_image)
-#displayimage(first_image,"original")
-#displayimage(new_image,"new")
-#saveimg("new_puppy",new_image)

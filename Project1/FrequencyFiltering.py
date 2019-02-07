@@ -29,15 +29,18 @@ def butterworthfilter(coefficients,image_array,highpass=0,cutoff=0.25):
         butterworthfilterecon = numpy.abs(numpy.fft.ifft2(butterworthfiltered))
         return butterworthfilterecon
 
+def reconstructimage(coefficients):
+    image_array=numpy.abs(numpy.fft.ifft2(coefficients))
+    return image_array
 
-first_image=SpatialFilter.loadimage("/Users/grahamskeats/Desktop/Noisy Puppy.JPG")
-greyscale=FrequencyAnalysis.checkgreyscale(first_image)
-SpatialFilter.displayimage(greyscale,"grey")
-coefficients=FrequencyAnalysis.getdft(greyscale)
-filteredimage=filterlowpass(coefficients,greyscale)
-SpatialFilter.displayimage(filteredimage,"filtered")
-coefficients=FrequencyAnalysis.getdft(filteredimage)
-FrequencyAnalysis.plotlogmagnitude(coefficients,"ideallowpassmagplot","ideallowpasslogplot")
-SpatialFilter.saveimg("ideallowpassimage",filteredimage)
-butterworthimagearray=butterworthfilter(coefficients,greyscale,highpass=1)
-SpatialFilter.displayimage(butterworthimagearray,"butterworth")
+#first_image=SpatialFilter.loadimage("/Users/grahamskeats/Desktop/Noisy Puppy.JPG")
+#greyscale=FrequencyAnalysis.checkgreyscale(first_image)
+#SpatialFilter.displayimage(greyscale,"grey")
+#coefficients=FrequencyAnalysis.getdft(greyscale)
+#filteredimage=filterlowpass(coefficients,greyscale)
+#SpatialFilter.displayimage(filteredimage,"filtered")
+#coefficients=FrequencyAnalysis.getdft(filteredimage)
+#FrequencyAnalysis.plotlogmagnitude(coefficients,"ideallowpassmagplot","ideallowpasslogplot")
+#SpatialFilter.saveimg("ideallowpassimage",filteredimage)
+#butterworthimagearray=butterworthfilter(coefficients,greyscale,highpass=1)
+#SpatialFilter.displayimage(butterworthimagearray,"butterworth")
