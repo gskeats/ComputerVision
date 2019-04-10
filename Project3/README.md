@@ -1,8 +1,8 @@
 Proj3 objective:
-to identify illegal gold mining operations using satellite data
+-to identify and annotate agricultural activity in satellite data imagery
+-try to apply any succesful agricultural classifiers to illegal gold mining since agriculture has more data for training and testing
 
 components: 
--feature extraction to identify the location/ area of the gold mines
--identify continued activity at the location over time 
--use blob detection on the tailing piles near these gold mineswq
--function to compute the probability that a given prediction is accurate
+-chop large satellite images and identify areas of agricultural activity and an equal number without any activity
+-use lbp since agriculture is often identifiable by straight lines/edges that infrequently appear in nature without human intervention
+-try HOG since there might be interesting gradient distributions for these images
